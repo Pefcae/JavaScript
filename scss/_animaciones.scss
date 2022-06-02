@@ -1,0 +1,24 @@
+
+
+.scale:hover{
+	transform: scale(1.2);
+	cursor: pointer;
+	transition: transform 3s;
+}
+
+.transform:hover{
+	transform: translateY(-10px);
+	cursor: pointer;
+}
+
+.textCenter{
+	text-align: center;
+}
+
+.textRight{
+	text-align: right;
+}
+
+.textLeft{
+	text-align: left;
+}

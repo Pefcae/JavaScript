@@ -1,0 +1,33 @@
+//definimos variables
+
+// map
+$paleta: (
+    'uno': black,
+    'dos': grey,
+    'tres':white,
+    'cuatro':red,
+    'cinco': #14a73e98,
+    'seis': rgba(20,167,62,1),
+    'siete':rgba(102,247,113,1),
+    );
+
+//mixins
+@mixin texto($font-size, $font-weight){
+    font-size: $font-size;
+    font-weight: $font-weight;
+    }
+
+
+//colores
+$mainColor:map-get($map:$paleta,$key:'uno');;
+$secondaryColor:map-get($map:$paleta,$key:'dos');;
+$fondo:map-get($map:$paleta,$key:'tres');;
+$keyColor:map-get($map:$paleta,$key:'cuatro');;
+
+
+//sizing
+$w-100:100%;
+$w-50:50%;
+$w-25:25%;
+
+

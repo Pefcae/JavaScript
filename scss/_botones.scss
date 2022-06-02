@@ -1,0 +1,70 @@
+/* From cssbuttons.io by @adamgiebl */
+.cssbuttons-io-button {
+ display: flex;
+ align-items: center;
+ /*font-family: inherit;*/
+ font-weight: 500;
+ font-size: 16px;
+ padding: 0.7em 1.4em 0.7em 1.1em;
+ color: white;
+ background: #ad5389;
+ background: linear-gradient(0deg, map-get($map:$paleta,$key:'seis') 0%, map-get($map:$paleta,$key:'siete') 100%);
+ border: none;
+ box-shadow: 0 0.7em 1.5em -0.5em map-get($map:$paleta,$key:'cinco');
+ letter-spacing: 0.05em;
+ text-decoration: none;
+ 
+
+    a {
+     text-decoration: none;
+}
+}
+
+// extends
+
+.cssbuttons-io-button-rounded{
+    @extend .cssbuttons-io-button;
+    border-radius: 15px;
+}
+
+.cssbuttons-io-button:hover {
+ box-shadow: 0 0.5em 1.5em -0.5em  map-get($map:$paleta,$key:'cinco');;
+}
+
+.cssbuttons-io-button:active {
+ box-shadow: 0 0.3em 1em -0.5em  map-get($map:$paleta,$key:'cinco');;
+}
+
+
+.botonera {
+    background-color: $fondo;
+    }
+
+div hr{
+    
+    width: 100%;
+    background: linear-gradient(0deg, map-get($map:$paleta,$key:'seis') 0%, map-get($map:$paleta,$key:'siete') 100%);
+    }
+
+.contenedorPNF{
+    position: relative;
+    display: inline-block;
+    text-align: center;
+}
+.texto-encima{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: map-get($map:$paleta,$key:'tres');;
+}
+.centrado{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: map-get($map:$paleta,$key:'tres');;
+    transform: translate(-50%, -50%);
+}
+
+
+
+

@@ -1,0 +1,240 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;500&display=swap");
+* {
+  font-family: 'Raleway', sans-serif;
+  padding: 0;
+  margin: 50;
+  text-decoration: none;
+  font-size: 2rem;
+  /*background-color: white;*/
+  color: black; }
+
+html {
+  font-size: 62.5%; }
+
+h1 {
+  font-size: 6rem;
+  font-weight: 500; }
+
+h2 {
+  font-size: 3rem;
+  font-weight: 300; }
+
+h3 {
+  font-size: 2rem;
+  font-weight: 200; }
+
+h4 {
+  font-size: 5rem;
+  font-weight: 200;
+  color: white; }
+
+p {
+  font-size: 2rem;
+  font-weight: 200;
+  margin: 10px; }
+
+.img_galeria {
+  border-radius: 50px;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px; }
+
+.img_productos {
+  border-radius: 2% 65% 10% 90% / 81% 10% 87% 15%; }
+
+.img_Carousel {
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px; }
+
+.img_publicacion {
+  border-radius: 0 100px 0 100px; }
+
+/* From cssbuttons.io by @adamgiebl */
+.cssbuttons-io-button, .cssbuttons-io-button-rounded {
+  display: flex;
+  align-items: center;
+  /*font-family: inherit;*/
+  font-weight: 500;
+  font-size: 16px;
+  padding: 0.7em 1.4em 0.7em 1.1em;
+  color: white;
+  background: #ad5389;
+  background: linear-gradient(0deg, #14a73e 0%, #66f771 100%);
+  border: none;
+  box-shadow: 0 0.7em 1.5em -0.5em #14a73e98;
+  letter-spacing: 0.05em;
+  text-decoration: none; }
+  .cssbuttons-io-button a, .cssbuttons-io-button-rounded a {
+    text-decoration: none; }
+
+.cssbuttons-io-button-rounded {
+  border-radius: 15px; }
+
+.cssbuttons-io-button:hover, .cssbuttons-io-button-rounded:hover {
+  box-shadow: 0 0.5em 1.5em -0.5em #14a73e98; }
+
+.cssbuttons-io-button:active, .cssbuttons-io-button-rounded:active {
+  box-shadow: 0 0.3em 1em -0.5em #14a73e98; }
+
+.botonera {
+  background-color: white; }
+
+div hr {
+  width: 100%;
+  background: linear-gradient(0deg, #14a73e 0%, #66f771 100%); }
+
+.contenedorPNF {
+  position: relative;
+  display: inline-block;
+  text-align: center; }
+
+.texto-encima {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: white; }
+
+.centrado {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: white;
+  transform: translate(-50%, -50%); }
+
+.scale:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+  transition: transform 3s; }
+
+.transform:hover {
+  transform: translateY(-10px);
+  cursor: pointer; }
+
+.textCenter {
+  text-align: center; }
+
+.textRight {
+  text-align: right; }
+
+.textLeft {
+  text-align: left; }
+
+.gridHome {
+  height: 30%;
+  width: auto;
+  display: grid;
+  column-gap: 40px;
+  row-gap: 3em;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1;
+  grid-template-areas: "area1 area1 area1" "area2 area3 area3" "area4 area4 area5" "area12 area12 area12" "area6 area7 area8" "area9 area10 area11"; }
+
+.gridProd {
+  height: 30%;
+  width: auto;
+  display: grid;
+  column-gap: 40px;
+  row-gap: 3em;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1;
+  grid-template-areas: "area1 area1 area1" "area2 area2 area3" "area4 area5 area5"; }
+
+.gridUbicacion {
+  /*height: 30%;*/
+  height: auto;
+  width: auto;
+  display: grid;
+  justify-content: center;
+  text-align: center;
+  font-size: 3rem;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto auto auto auto auto;
+  grid-template-areas: "area1 area2 area3 area4" "area5 area6 area7 area8" "area9 area10 area11 area12" "area13 area14 area15 area16" "area17 area18 area19 area20";
+  /*background-color: cornflowerblue;*/ }
+
+.area-1 {
+  grid-area: area1; }
+
+.area-2 {
+  grid-area: area2; }
+
+.area-3 {
+  grid-area: area3; }
+
+.area-4 {
+  grid-area: area4; }
+
+.area-5 {
+  grid-area: area5; }
+
+.area-6 {
+  grid-area: area6; }
+
+.area-7 {
+  grid-area: area7; }
+
+.area-8 {
+  grid-area: area8; }
+
+.area-9 {
+  grid-area: area9; }
+
+.area-10 {
+  grid-area: area10; }
+
+.area-11 {
+  grid-area: area11; }
+
+.area-12 {
+  grid-area: area12; }
+
+/*Mobile*/
+@media screen and (max-width: 700px) {
+  .gridHome {
+    height: 30%;
+    width: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: "area1  area1" "area3 area3" "area2 area2" "area4 area4" "area5 area5" "area12 area12" "area6 area7" "area8 area9" "area10 area11"; }
+  .gridProd {
+    height: 30%;
+    width: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: "area1  area1" "area3 area3" "area2 area2" "area4 area4" "area5 area5"; }
+  .gridUbicacion {
+    height: 30%;
+    width: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-areas: "area4" "area1"  "area2"  "area3" "area8" "area5"  "area6" "area7"  "area12" "area9"  "area10"  "area11"  "area16" "area13"  "area14"  "area15"  "area20" "area17"  "area18" "area19"; }
+  h1 {
+    font-size: 4rem;
+    font-weight: 500; } }
+
+/*Tablet*/
+@media screen and (max-width: 1000px) {
+  .gridHome {
+    height: 30%;
+    width: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: "area1  area1" "area3 area3" "area2 area2" "area4 area4" "area5 area5" "area12 area12" "area6 area7" "area8 area9" "area10 area11"; }
+  .gridProd {
+    height: 30%;
+    width: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: "area1  area1" "area3 area3" "area2 area2" "area4 area4" "area5 area5"; }
+  .gridUbicacion {
+    height: 30%;
+    width: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-areas: "area4" "area1"  "area2"  "area3" "area8" "area5"  "area6" "area7"  "area12" "area9"  "area10"  "area11"  "area16" "area13"  "area14"  "area15"  "area20" "area17"  "area18" "area19"; }
+  h1 {
+    font-size: 6rem;
+    font-weight: 500; } }
