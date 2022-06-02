@@ -22,6 +22,15 @@ function operacion(valor1, valor2, operacion) {
 }
 
 
+function pedirNUMERO(texto) {
+    let valor = prompt(texto);
+    while (isNaN(parseInt(valor)) ) {
+        valor = prompt(texto);
+    }
+    return valor;
+}
+
+
 alert ("Desafio entregable n2 de Pablo Federiconi");
 
 let SubTotal_hamb=0;
@@ -44,15 +53,18 @@ const Valor_bebida = 100;
 
 alert ("Bienvenido a la hamburguesería, a continuación le tomaremos su pedido");
 
-let Cant_Hamburguesas = prompt("Cuantas hamburguesas quiere:");
+
+let Cant_Hamburguesas = pedirNUMERO("Cuantas hamburguesas quiere:");
+
+
 if (Cant_Hamburguesas>0) 
     {
     for (i=1;i <=Cant_Hamburguesas ;i++ )
        { 
-        Hamburguesa_elegida = prompt("Elegí tu Hamburguesa N°:"+ i + " \n 1-Con queso $"+ Valor_Hamb_Queso + " \n 2-Sin queso $"+ Valor_Hamb );
+        Hamburguesa_elegida = pedirNUMERO("Elegí tu Hamburguesa N°:"+ i + " \n 1-Con queso $"+ Valor_Hamb_Queso + " \n 2-Sin queso $"+ Valor_Hamb );
 
          while (Hamburguesa_elegida != 1 && Hamburguesa_elegida != 2 )
-             {Hamburguesa_elegida = prompt(" opción incorrecta, elegí de nuevo tu Hamburguesa N°:"+ i + " \n 1-Con queso $"+ Valor_Hamb_Queso + "\n 2-Sin queso $"+ Valor_Hamb);}
+             {Hamburguesa_elegida = pedirNUMERO(" opción incorrecta, elegí de nuevo tu Hamburguesa N°:"+ i + " \n 1-Con queso $"+ Valor_Hamb_Queso + "\n 2-Sin queso $"+ Valor_Hamb);}
          
          if (Hamburguesa_elegida==1) 
              { 
@@ -64,11 +76,9 @@ if (Cant_Hamburguesas>0)
                 SubTotal_hamb=operacion(SubTotal_hamb,Valor_Hamb,"1") ;
                 Pedido = operacion(Pedido,"Hamburguesa sin Queso: $"+ Valor_Hamb + " \n","1") ;
             }
-
         }
     }
-
-    alert(Pedido + "\n\nSubtotal por Hamburguesas: " + SubTotal_hamb );
+    alert(Pedido + "\n\n                   Subtotal por Hamburguesas: " + SubTotal_hamb );
     Total = operacion(Total,SubTotal_hamb,"1") ;
 
 
@@ -76,17 +86,17 @@ if (Cant_Hamburguesas>0)
 
 
 
-let Cant_Acomp = prompt("Cuantos acompañamientos quiere:");
+let Cant_Acomp = pedirNUMERO("Cuantos acompañamientos quiere:");
 if (Cant_Acomp>0) 
     {
 
     for (i=1;i <=Cant_Acomp ;i++ )
        { 
 
-        Acomp_elegido = prompt("Elegí tu Acompañamiento N°:"+ i + " \n 1-Papas Con cheddar $"+ Valor_PapasCheddar + " \n 2-Papas con Bacon y Cheddar $"+ Valor_PapasCheddaryBacon );
+        Acomp_elegido = pedirNUMERO("Elegí tu Acompañamiento N°:"+ i + " \n 1-Papas Con cheddar $"+ Valor_PapasCheddar + " \n 2-Papas con Bacon y Cheddar $"+ Valor_PapasCheddaryBacon );
 
          while (Acomp_elegido != 1 && Acomp_elegido != 2 )
-             {Acomp_elegido = prompt(" opción incorrecta, elegí de nuevo tu Acompañamiento N°:"+ i + " \n 1-Papas Con cheddar $"+ Valor_PapasCheddar + " \n 2-Papas con Bacon y Cheddar $"+ Valor_PapasCheddaryBacon );}
+             {Acomp_elegido = pedirNUMERO(" opción incorrecta, elegí de nuevo tu Acompañamiento N°:"+ i + " \n 1-Papas Con cheddar $"+ Valor_PapasCheddar + " \n 2-Papas con Bacon y Cheddar $"+ Valor_PapasCheddaryBacon );}
          
          if (Acomp_elegido==1) 
              { 
@@ -103,19 +113,19 @@ if (Cant_Acomp>0)
     }
     
     Total = operacion(Total,SubTotal_acomp,"1") ;
-    alert(Pedido + "\n\nSubtotal por Hamburguesas: " + SubTotal_hamb + "\nSubtotal por Acompañamiento: " + SubTotal_acomp + "\nTotal: " + Total );
+    alert(Pedido + "\n\n                   Subtotal por Hamburguesas: " + SubTotal_hamb + "\n                   Subtotal por Acompañamiento: " + SubTotal_acomp + "\n                   Total: " + Total );
     
-let Cant_bebidas = prompt("Cuantas bebidas quiere:");
+let Cant_bebidas = pedirNUMERO("Cuantas bebidas quiere:");
 if (Cant_bebidas>0) 
     {
 
     for (i=1;i <=Cant_bebidas ;i++ )
        { 
 
-        Bebida_elegida = prompt("Elegí tu bebida N°:"+ i + " \n 1-CocaCola $"+ Valor_bebida + " \n 2-SevenUp $"+ Valor_bebida );
+        Bebida_elegida = pedirNUMERO("Elegí tu bebida N°:"+ i + " \n 1-CocaCola $"+ Valor_bebida + " \n 2-SevenUp $"+ Valor_bebida );
 
          while (Bebida_elegida != 1 && Bebida_elegida != 2 )
-             {Bebida_elegida = prompt(" opción incorrecta, elegí de nuevo tu bebida N°:"+ i + " \n 1-CocaCola $"+ Valor_bebida + " \n 2-SevenUp $"+ Valor_bebida  );}
+             {Bebida_elegida = pedirNUMERO(" opción incorrecta, elegí de nuevo tu bebida N°:"+ i + " \n 1-CocaCola $"+ Valor_bebida + " \n 2-SevenUp $"+ Valor_bebida  );}
          
          if (Bebida_elegida==1) 
              { 
@@ -131,10 +141,12 @@ if (Cant_bebidas>0)
         }
     }
     
+    
     Total = operacion(Total,SubTotal_bebida,"1") ;
     Propina = operacion(Total,0.1,"3");
+
     //alert(Pedido + "\n\nSubtotal por Hamburguesas: " + SubTotal_hamb + "\nSubtotal por Acompañamiento: " + SubTotal_acomp + "\nSubtotal por Bebidas: " + SubTotal_bebida + "\nTotal: " + Total +"\nPropina: " + operacion(Total,0.1,"3") );
-    let Comensales = prompt("Cuantas personas son para dividir la cuenta: ");
-    alert(Pedido + "\n\nSubtotal por Hamburguesas: " + SubTotal_hamb + "\nSubtotal por Acompañamiento: " + SubTotal_acomp + "\nSubtotal por Bebidas: " + SubTotal_bebida + "\nTotal: " + Total +"\nPropina: " + Propina +"\n\nTotal por cada uno: " + operacion(operacion(Total,Propina,"1"),Comensales,"4") );
+    let Comensales = pedirNUMERO("Cuantas personas son para dividir la cuenta: ");
+    alert(Pedido + "\n\n                   Subtotal por Hamburguesas: " + SubTotal_hamb + "\n                   Subtotal por Acompañamiento: " + SubTotal_acomp + "\n                   Subtotal por Bebidas: " + SubTotal_bebida + "\n\n                   Total: " + Total +"\n                   Propina: " + Propina +"\n                   Cantidad de Comensales: " + Comensales +"\n\n\n                   Total por cada uno: " + operacion(operacion(Total,Propina,"1"),Comensales,"4") );
 
 
