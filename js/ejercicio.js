@@ -1,23 +1,76 @@
-
-let SubTotal_hamb=0;
-let SubTotal_acomp=0;
-let SubTotal_bebida=0;
-let Total=0;
-let Propina=0;
 let Pedido ='';
+const ListHamburguesas = [];
+const ListAcom = [];
+const ListBebidas = [];
 
-const Valor_Hamb_Queso=500;
-const Valor_Hamb=400;
-const Valor_PapasCheddar=200;
-const Valor_PapasCheddaryBacon=300;
-const Valor_bebida = 100;
+class Product {
+    constructor(name, price,categoria) {
+        this.name = name;
+        this.price = price;
+        this.categoria=categoria;
+    }
+    
+}
 
-const prodHamb_1="Hamburguesa con Queso";
-const prodHamb_2="Hamburguesa sin Queso";
-const prodAcomp_1="Papas con Cheddar";
-const prodAcomp_2="Papas con cheddar y Bacon";
-const prodBebida_1="Coca Cola";
-const prodBebida_2="Seven Up";
+class CarritoDeCompras {
+    constructor() {
+        this.productos = []
+        this.name = ''
+        this.total = 0
+    }
+    setName(value) {
+        this.name = value
+    }
+
+    addProduct(product) {
+        this.productos.push(product)
+    }
+
+    vaciarCarrito() {
+        this.productos = [];
+            
+        //while (this.productos.length != 0  )
+        //{
+         //   this.productos.pop()
+        //}
+        
+    }
+
+    eliminarProducto(valor) {
+            //alert("vamos a eliminar el producto"  + this.productos.splice (valor,1);
+            
+            //this.productos.splice(0, 2);
+            //Listproducts.splice(valor-1, 1);
+            this.productos.splice(valor-1, 1);
+            alert("Producto Eliminado");
+      }
+
+    eliminarUltProducto(valor) {   
+            this.productos.pop()
+            alert("Producto Eliminado");
+      }
+
+    getTotal() 
+        {
+        Pedido ='';
+        let cont=0;
+        this.total = 0;
+
+         for (const A of this.productos) 
+            {
+            cont++;
+            this.total = this.total + A.price
+            Pedido=Pedido + cont + " - " + A.name +" $"+ A.price   + "\n"
+            }
+        
+        alert ( "Hola " + this.name + " su pedido es: \n" + Pedido + "\n Total: " + this.total);
+         
+        }
+
+
+}
+
+
 
 function operacion(valor1, valor2, operacion) {
     switch (operacion){
@@ -50,68 +103,132 @@ function pedirNUMERO(texto) {
 }
 
 
+ function realizarPedido()
+ {
 
-function realizarPedido(text1,text2,prod_1,Valor_prod1,prod_2,Valor_prod2)
-{
+     let eleccion=0;
+     let menu='';
+     let i=0;
+
+    
+    for (i=0;i < Listproducts.length ;i++ )
+        {
+            menu= menu +"" + (i+1) +" - "  + Listproducts[i].name + " $" + Listproducts[i].price +"\n";
+        }
+
+    menu = menu +"\n"+"-1 - deshacer (elimina último)"
+
+    menu = menu +"\n"+"0 - para finalizar"
+     
+
+    eleccion = pedirNUMERO("Por favor seleccione una opción del menú\n" + menu );
+
+    
    
-    let eleccion=0;
-    let cantidad=0;
-    let subtotal=0;
-
-    cantidad = pedirNUMERO(text1);
-
-    if (cantidad>0) 
-    {
-    for (i=1;i <=cantidad ;i++ )
-       { 
-        eleccion = pedirNUMERO(text2 + " N°:" + i + " \n 1-" +prod_1 + " $" + Valor_prod1 + " \n 2-" + prod_2 + " $"+ Valor_prod2 );
-
-         while (eleccion != 1 && eleccion != 2 )
-             {  
-                eleccion = pedirNUMERO(" opción incorrecta, " + text2 + " N°:" + i + " \n 1-" +prod_1 + " $" + Valor_prod1 + " \n 2-" + prod_2 + " $"+ Valor_prod2 );
+    while (eleccion<-1 || eleccion> Listproducts.lenght)
+           { 
+                eleccion = pedirNUMERO("opción incorrecta, Por favor seleccione una opción del menú\n" + menu );
             }
 
-         if (eleccion==1) 
-             { 
-                subtotal=operacion(subtotal,Valor_prod1,"1") ;
-                Pedido = operacion(Pedido,prod_1 +" $"+ Valor_prod1 + " \n","1") ;
-                }
-         else
-            {
-                subtotal=operacion(subtotal,Valor_prod2,"1") ;
-                Pedido = operacion(Pedido,prod_2 + " $"+ Valor_prod2 + " \n","1") ;
-                }
-        
 
-        }
-    }
+     while (eleccion!="0")
 
-   return subtotal;
+              {  
+                 
+                if (eleccion==-1 && cliente.productos.length>0) {
+                    cliente.eliminarUltProducto();
+
+                } 
+                else    
+                 {   
+                    cliente.addProduct(Listproducts[eleccion-1]) ;  
+                  }
+
+                eleccion = pedirNUMERO("Por favor seleccione una opción del menú\n" + menu );
+                while (eleccion<-1 || eleccion>Listproducts.lenght)
+                    { 
+
+                        eleccion = pedirNUMERO("opción incorrecta, Por favor seleccione una opción del menú\n" + menu );
+                    }
+             }
+    
 
 }
 
 
+const cliente = new CarritoDeCompras();
 
-alert ("Desafio entregable n2 de Pablo Federiconi");
-alert ("Bienvenido a la hamburguesería, a continuación le tomaremos su pedido");
+ListHamburguesas.push (new Product('Hamburguesa con Queso', 500,1));
+ListHamburguesas.push (new Product('Hamburguesa sin Queso', 400,1));
+ListAcom.push (new Product('Papas con Cheddar', 200,2));
+ListAcom.push (new Product('Papas con cheddar y Bacon', 300,2));
+ListBebidas.push (new Product('Coca Cola', 100,3));
+ListBebidas.push (new Product('Seven Up', 100,3));
+
+const Listproducts = (ListHamburguesas.concat(ListAcom)).concat(ListBebidas);
 
 
-SubTotal_hamb=realizarPedido("Cuantas hamburguesas quiere:","Elegí tu Hamburguesa",prodHamb_1,Valor_Hamb_Queso,prodHamb_2,Valor_Hamb);
-//alert(Pedido + "\n\n                   Subtotal por Hamburguesas: " + SubTotal_hamb );
-Total = operacion(Total,SubTotal_hamb,"1") ;
 
-SubTotal_acomp=realizarPedido("Cuantos acompañamientos quiere:","Elegí tu Acompañamiento",prodAcomp_1,Valor_PapasCheddar ,prodAcomp_2,Valor_PapasCheddaryBacon);
-//alert(Pedido + "\n\n                   Subtotal por Acompañamientos: " + SubTotal_acomp );
-Total = operacion(Total,SubTotal_acomp,"1") ;
 
-SubTotal_bebida=realizarPedido("Cuantas bebidas quiere:","Elegí tu bebida",prodBebida_1,Valor_bebida,prodBebida_2,Valor_bebida);
-//alert(Pedido + "\n\n                   Subtotal por Bebidas: " + SubTotal_bebida );
-Total = operacion(Total,SubTotal_bebida,"1") ;
+alert ("Desafio entregable n3 de Pablo Federiconi (Agregando Clases y arrays)");
 
-Propina = operacion(Total,0.1,"3");
+let Usuario = prompt("Por favor Ingrese su nombre");
 
-let Comensales = pedirNUMERO("Cuantas personas son para dividir la cuenta: ");
+cliente.setName(Usuario);
 
-alert(Pedido + "\n\n                   Subtotal por Hamburguesas: " + SubTotal_hamb + "\n                   Subtotal por Acompañamiento: " + SubTotal_acomp + "\n                   Subtotal por Bebidas: " + SubTotal_bebida + "\n\n                   Total: " + Total +"\n                   Propina: " + Propina +"\n                   Cantidad de Comensales: " + Comensales +"\n\n\n                   Total por cada uno: " + operacion(operacion(Total,Propina,"1"),Comensales,"4") );
+alert ("Hola " + cliente.name + ", Bienvenido a la hamburguesería, a continuación le tomaremos su pedido");
 
+realizarPedido();
+
+cliente.getTotal();
+
+    let opcion=0;
+    
+    opcion = prompt("¿Confirma el pedido? \n 1) Sí \n 2) No, quiero eliminar un producto \n 3)Vaciar carrito ");
+    
+    while (opcion <0 || opcion>3)
+           { 
+                opcion = pedirNUMERO("opción incorrecta, ¿Confirma el pedido? \n 1) Sí \n 2) No, quiero eliminar un producto \n 3)Vaciar carrito");
+            }
+
+            if (opcion==1 )  alert ("Pedido Confirmado");
+
+    while (opcion!=1 )
+    {
+
+         switch (opcion){
+                    case "1":
+                        alert ("Pedido Confirmado");
+                        break;
+                    case "2":
+                        opcion = pedirNUMERO("Seleccione el número del item que desea eliminar\n" + Pedido);
+                        while (opcion <0 || opcion>cliente.productos.length)
+                           { 
+                                opcion = pedirNUMERO("Seleccione el número del item que desea eliminar\n" + Pedido);
+                            }
+
+                        cliente.eliminarProducto(opcion);
+                        cliente.getTotal();
+
+                        break;
+                    case "3":
+                        alert ("Se procedió a vaciar el carrito");
+                        cliente.vaciarCarrito();   
+                        cliente.getTotal();
+                        break;
+                    default:
+                        break;
+                }
+
+    opcion = prompt("¿Confirma el pedido \n 1) Sí \n 2) No, quiero eliminar un producto \n 3)Vaciar carrito ");
+    
+    while (opcion <0 || opcion>3)
+           { 
+                opcion = pedirNUMERO("opción incorrecta, ¿Confirma el pedido? \n 1) Sí \n 2) No, quiero eliminar un producto \n 3)Vaciar carrito");
+            }
+
+    }
+
+
+alert("Muchas gracias por su pedido, Vuelva Pronto");
 
