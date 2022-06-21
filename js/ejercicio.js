@@ -157,9 +157,10 @@ function mostrarProductos(){
     const botonCompra = document.createElement('button')
     botonCompra.innerHTML='Comprar'
     contenedorCompra.append(botonCompra)
+    console.dir(botonCompra)
     
     botonCompra.addEventListener("click", () => {
-       
+        botonCompra.disabled=true
         HacerPedido()
         })  
 
@@ -188,24 +189,27 @@ function HacerPedido()
         let subtotal=0
         let total=0
 
-        const textPedido = document.createElement('h5')
-    
+        
 
         for (i=0;i < ListHamburguesas.length ;i++ )
         {
+        subtotal = operacion(parrafo[i].value ,ListHamburguesas[i].price,'3')
 
-
-        subtotal = parrafo[i].value * ListHamburguesas[i].price
-        total =total+subtotal
+        total =operacion(total,subtotal,'1')
         pedido=`${pedido} Producto elegido ${ListHamburguesas[i].name}  cantidad  ${parrafo[i].value}  precio unitario: ${ListHamburguesas[i].price} Subtotal:  ${subtotal}
-        `
-
+            
+            `
         }
         pedido = `
-        ${pedido} El total es: ${total}
+
+            ${pedido} El total es: ${total}
+        
         `
         console.log(pedido)
-        textPedido.textContent = pedido
+        
+        const textPedido = document.createElement('h5')
+    
+        textPedido.innerText = pedido
 
         contenedorCompra.append(textPedido)
 }
