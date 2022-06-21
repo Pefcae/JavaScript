@@ -70,8 +70,6 @@ class CarritoDeCompras {
 
 }
 
-
-
 function operacion(valor1, valor2, operacion) {
     switch (operacion){
             case "1":
@@ -94,141 +92,120 @@ function operacion(valor1, valor2, operacion) {
 }
 
 
-function pedirNUMERO(texto) {
-    let valor = prompt(texto);
-    while (isNaN(parseInt(valor)) ) {
-        valor = prompt(texto);
-    }
-    return valor;
-}
-
-
- function realizarPedido()
- {
-
-     let eleccion=0;
-     let menu='';
-     let i=0;
-
-    
-    for (i=0;i < Listproducts.length ;i++ )
-        {
-            menu= menu +"" + (i+1) +" - "  + Listproducts[i].name + " $" + Listproducts[i].price +"\n";
-        }
-
-    menu = menu +"\n"+"-1 - deshacer (elimina último)"
-
-    menu = menu +"\n"+"0 - para finalizar"
-     
-
-    eleccion = pedirNUMERO("Por favor seleccione una opción del menú\n" + menu );
-
-    
-   
-    while (eleccion<-1 || eleccion> Listproducts.lenght)
-           { 
-                eleccion = pedirNUMERO("opción incorrecta, Por favor seleccione una opción del menú\n" + menu );
-            }
-
-
-     while (eleccion!="0")
-
-              {  
-                 
-                if (eleccion==-1 && cliente.productos.length>0) {
-                    cliente.eliminarUltProducto();
-
-                } 
-                else    
-                 {   
-                    cliente.addProduct(Listproducts[eleccion-1]) ;  
-                  }
-
-                eleccion = pedirNUMERO("Por favor seleccione una opción del menú\n" + menu );
-                while (eleccion<-1 || eleccion>Listproducts.lenght)
-                    { 
-
-                        eleccion = pedirNUMERO("opción incorrecta, Por favor seleccione una opción del menú\n" + menu );
-                    }
-             }
-    
-
-}
-
-
 const cliente = new CarritoDeCompras();
 
 ListHamburguesas.push (new Product('Hamburguesa con Queso', 500,1));
 ListHamburguesas.push (new Product('Hamburguesa sin Queso', 400,1));
-ListAcom.push (new Product('Papas con Cheddar', 200,2));
-ListAcom.push (new Product('Papas con cheddar y Bacon', 300,2));
-ListBebidas.push (new Product('Coca Cola', 100,3));
-ListBebidas.push (new Product('Seven Up', 100,3));
+ListHamburguesas.push (new Product('Papas con Cheddar', 200,2));
+ListHamburguesas.push (new Product('Papas con cheddar y Bacon', 300,2));
+ListHamburguesas.push (new Product('Coca Cola', 100,3));
+ListHamburguesas.push (new Product('Seven Up', 100,3));
 
-const Listproducts = (ListHamburguesas.concat(ListAcom)).concat(ListBebidas);
+//const Listproducts = (ListHamburguesas.concat(ListAcom)).concat(ListBebidas);
 
-
-
-
-alert ("Desafio entregable n3 de Pablo Federiconi (Agregando Clases y arrays)");
-
-let Usuario = prompt("Por favor Ingrese su nombre");
-
-cliente.setName(Usuario);
-
-alert ("Hola " + cliente.name + ", Bienvenido a la hamburguesería, a continuación le tomaremos su pedido");
-
-realizarPedido();
-
-cliente.getTotal();
-
-    let opcion=0;
+const boton = document.getElementById("sendData");
     
-    opcion = prompt("¿Confirma el pedido? \n 1) Sí \n 2) No, quiero eliminar un producto \n 3)Vaciar carrito ");
+boton.addEventListener("click", () => {
+
+
+let fName = document.getElementById("name")
+let valFirstName = fName.value;
+let lage = document.getElementById("age")
+let valAge = lage.value
+
+ let contenedor = document.getElementById("contenedor")
+ let parrafo = document.createElement('p')
+
+ //contenedor.append(parrafo)
+ cliente.setName(valFirstName);
+ boton.remove()
+
+ let titulo = document.getElementById('titulo')
+ let subtitulo = document.getElementById('subtitulo')
+
+titulo.innerHTML=`Hola ${valFirstName} `
+subtitulo.innerHTML='Hacé tu compra, ingresá las cantidades'
+
+fName.remove()
+lage.remove()
+mostrarProductos()
+
+}
+)   
+
+function mostrarProductos(){
+
+    ListHamburguesas.forEach((product) => {
+
+
+    const contenedor = document.getElementById('showAllProducts')
+    /* Agregar titulo  */
+    const titulo = document.createElement('h3')
+    const input = document.createElement('input')
+
+    titulo.textContent = ` Producto  ${product.name }  al precio de $ ${product.price} `
+    input.type = "number"
+    input.id = "cantidad"
+    input.value=product.price
+
+    contenedor.appendChild(titulo)
+    contenedor.appendChild(input)
+
+  })
+    const contenedorCompra = document.getElementById('compra')
+
+    const botonCompra = document.createElement('button')
+    botonCompra.innerHTML='Comprar'
+    contenedorCompra.append(botonCompra)
     
-    while (opcion <0 || opcion>3)
-           { 
-                opcion = pedirNUMERO("opción incorrecta, ¿Confirma el pedido? \n 1) Sí \n 2) No, quiero eliminar un producto \n 3)Vaciar carrito");
-            }
+    botonCompra.addEventListener("click", () => {
+       
+        HacerPedido()
+        })  
 
-            if (opcion==1 )  alert ("Pedido Confirmado");
 
-    while (opcion!=1 )
-    {
+//let parrafo = document.querySelector("showAllProducts input")
+//let contenedor = document.querySelector("showAllProducts")
 
-         switch (opcion){
-                    case "1":
-                        alert ("Pedido Confirmado");
-                        break;
-                    case "2":
-                        opcion = pedirNUMERO("Seleccione el número del item que desea eliminar\n" + Pedido);
-                        while (opcion <0 || opcion>cliente.productos.length)
-                           { 
-                                opcion = pedirNUMERO("Seleccione el número del item que desea eliminar\n" + Pedido);
-                            }
+//parrafo = document.querySelector(".texto")
 
-                        cliente.eliminarProducto(opcion);
-                        cliente.getTotal();
+//    const contenedorCompraitem = document.getElementById('cantidad')
 
-                        break;
-                    case "3":
-                        alert ("Se procedió a vaciar el carrito");
-                        cliente.vaciarCarrito();   
-                        cliente.getTotal();
-                        break;
-                    default:
-                        break;
-                }
+}
 
-    opcion = prompt("¿Confirma el pedido \n 1) Sí \n 2) No, quiero eliminar un producto \n 3)Vaciar carrito ");
+
+function HacerPedido()
+{ 
+ 
+        const contenedorCompra = document.getElementById('compra')
+
+        const textCompra = document.createElement('h3')
+        textCompra.textContent = `Compra Efectuada`
+        contenedorCompra.append(textCompra)
+
+        let parrafo = document.querySelectorAll("#cantidad")
+        let pedido=''
+        let subtotal=0
+        let total=0
+
+        const textPedido = document.createElement('h5')
     
-    while (opcion <0 || opcion>3)
-           { 
-                opcion = pedirNUMERO("opción incorrecta, ¿Confirma el pedido? \n 1) Sí \n 2) No, quiero eliminar un producto \n 3)Vaciar carrito");
-            }
 
-    }
+        for (i=0;i < ListHamburguesas.length ;i++ )
+        {
 
 
-alert("Muchas gracias por su pedido, Vuelva Pronto");
+        subtotal = parrafo[i].value * ListHamburguesas[i].price
+        total =total+subtotal
+        pedido=`${pedido} Producto elegido ${ListHamburguesas[i].name}  cantidad  ${parrafo[i].value}  precio unitario: ${ListHamburguesas[i].price} Subtotal:  ${subtotal}
+        `
 
+        }
+        pedido = `
+        ${pedido} El total es: ${total}
+        `
+        console.log(pedido)
+        textPedido.textContent = pedido
+
+        contenedorCompra.append(textPedido)
+}
