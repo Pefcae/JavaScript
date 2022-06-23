@@ -103,75 +103,108 @@ ListHamburguesas.push (new Product('Seven Up', 100,3));
 
 //const Listproducts = (ListHamburguesas.concat(ListAcom)).concat(ListBebidas);
 
+let contenedor = document.getElementById("contenedor")
 const boton = document.getElementById("sendData");
-    
+const fName = document.getElementById("name")
+const lage = document.getElementById("age")
+
+boton.disabled=true
+
+
+
+
+fName.onkeydown = () => {
+                        fName.className="sizeXL"
+                         fName.classList.add("fblue")
+                     }
+fName.onkeyup = () => {fName.className="sizeM"}
+
+
+lage.onkeydown = () => {
+                            lage.className="sizeXL"
+                         lage.classList.add("fblue")
+                    }
+lage.onkeyup = () => {lage.className="sizeM"}
+
+lage.onchange = () => { 
+                        if(lage.value<18) {
+                            let MensajeError = document.createElement('p')
+                            MensajeError.innerHTML="No puede ser menor d edad"
+                            MensajeError.id="error"
+                            boton.disabled=true
+                            contenedor.appendChild(MensajeError)
+                            }
+                        else
+                            {  
+                            const MensajeError = document.getElementById("error")
+                            MensajeError.remove() 
+                            }
+                        }
+
+fName.onmousemove = () => {
+        boton.disabled=false 
+        boton.className="bglgreen"
+        }
+
 boton.addEventListener("click", () => {
 
 
-let fName = document.getElementById("name")
-let valFirstName = fName.value;
-let lage = document.getElementById("age")
-let valAge = lage.value
+    let valFirstName = fName.value;
+    let valAge = lage.value
 
- let contenedor = document.getElementById("contenedor")
- let parrafo = document.createElement('p')
+     cliente.setName(valFirstName);
+     boton.remove()
 
- //contenedor.append(parrafo)
- cliente.setName(valFirstName);
- boton.remove()
+     let titulo = document.getElementById('titulo')
+     let subtitulo = document.getElementById('subtitulo')
 
- let titulo = document.getElementById('titulo')
- let subtitulo = document.getElementById('subtitulo')
+    titulo.innerHTML=`Hola ${valFirstName} `
+    subtitulo.innerHTML='Hacé tu compra, ingresá las cantidades'
 
-titulo.innerHTML=`Hola ${valFirstName} `
-subtitulo.innerHTML='Hacé tu compra, ingresá las cantidades'
+    fName.remove()
+    lage.remove()
+    mostrarProductos()
 
-fName.remove()
-lage.remove()
-mostrarProductos()
-
-}
-)   
+    })   
 
 function mostrarProductos(){
 
     ListHamburguesas.forEach((product) => {
 
 
-    const contenedor = document.getElementById('showAllProducts')
-    /* Agregar titulo  */
-    const titulo = document.createElement('h3')
-    const input = document.createElement('input')
+        const contenedor = document.getElementById('formulario')
+        const titulo = document.createElement('h3')
+        const input = document.createElement('input')
 
-    titulo.textContent = ` Producto  ${product.name }  al precio de $ ${product.price} `
-    input.type = "number"
-    input.id = "cantidad"
-    input.value=product.price
+        titulo.textContent = ` Producto  ${product.name }  al precio de $ ${product.price} `
+        input.type = "number"
+        input.id = "cantidad"
 
-    contenedor.appendChild(titulo)
-    contenedor.appendChild(input)
+        input.onmousemove = () => {  input.className="bglgreen"        }
+   
 
-  })
-    const contenedorCompra = document.getElementById('compra')
+        contenedor.appendChild(titulo)
+        contenedor.appendChild(input)
 
-    const botonCompra = document.createElement('button')
-    botonCompra.innerHTML='Comprar'
-    contenedorCompra.append(botonCompra)
-    console.dir(botonCompra)
+      })
+
+
+
+
+       const contenedorCompra = document.getElementById('compra')
+
+        const botonCompra = document.createElement('input')
+        botonCompra.type = "submit"
+        botonCompra.innerHTML='Enviar'
+        contenedorCompra.append(botonCompra)
+
+        
+        botonCompra.addEventListener("click", () => {
+            botonCompra.disabled=true
+
+            HacerPedido()
+            })  
     
-    botonCompra.addEventListener("click", () => {
-        botonCompra.disabled=true
-        HacerPedido()
-        })  
-
-
-//let parrafo = document.querySelector("showAllProducts input")
-//let contenedor = document.querySelector("showAllProducts")
-
-//parrafo = document.querySelector(".texto")
-
-//    const contenedorCompraitem = document.getElementById('cantidad')
-
 }
 
 
@@ -213,3 +246,4 @@ function HacerPedido()
 
         contenedorCompra.append(textPedido)
 }
+
